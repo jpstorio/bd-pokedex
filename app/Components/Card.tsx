@@ -192,18 +192,18 @@ export default function Card({ content, index }: CardProps) {
                         </tr>
                         <tr>
                             <td className="items-center">Height:</td>
-                            <td className="pl-3">
-                                <AiOutlineColumnHeight className="inline-block" />
-                                <span className="font-medium"> {content.height.minimum} </span> -
-                                <span className="font-medium"> {content.height.maximum} </span>
+                            <td className="pl-3 flex items-center">
+                                <AiOutlineColumnHeight size={20} className="inline-block mb-[0.5px] mr-1" />
+                                <span className="font-medium mr-1"> {content.height.minimum} </span> -
+                                <span className="font-medium ml-1"> {content.height.maximum} </span>
                             </td>
                         </tr>
                         <tr>
                             <td className="items-center">Weight:</td>
-                            <td className="pl-3">
-                                <GiWeight className="inline-block" />
-                                <span className="font-medium"> {content.weight.minimum} </span> -
-                                <span className="font-medium"> {content.weight.maximum} </span>
+                            <td className="pl-3 flex items-center">
+                                <GiWeight size={20} className="inline-block mb-[0.5px] mr-1" />
+                                <span className="font-medium mr-1"> {content.weight.minimum} </span> -
+                                <span className="font-medium ml-1"> {content.weight.maximum} </span>
                             </td>
                         </tr>
                     </tbody>
