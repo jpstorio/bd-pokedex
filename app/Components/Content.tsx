@@ -23,6 +23,18 @@ const chosenPokemon = [
     "Blastoise",
     "Wartortle",
     "Caterpie",
+    "Fearow",
+    "Ekans",
+    "Arbok",
+    "Nidoking",
+    "Dugtrio",
+    "Victreebel",
+    "Tentacruel",
+    "Golem",
+    "Slowbro",
+    "Magneton",
+    "Doduo",
+    "Dewgong",
 ];
 
 type PokemonItemProps = {
