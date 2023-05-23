@@ -18,7 +18,7 @@ import {
 } from "react-icons/gi";
 import { IoIosWater } from "react-icons/io";
 import { MdOutlineElectricBolt } from "react-icons/md";
-import { VscWorkspaceUnknown, VscTypeHierarchySuper } from "react-icons/vsc";
+import { VscWorkspaceUnknown } from "react-icons/vsc";
 import { SiShadow } from "react-icons/si";
 import { AiOutlineColumnHeight } from "react-icons/ai";
 
@@ -142,6 +142,7 @@ export default function Card({ content, index }: CardProps) {
         Shadow: <SiShadow />,
     };
 
+    // For framer motion transiton
     const spring = {
         type: "spring",
         damping: 10,
@@ -176,9 +177,7 @@ export default function Card({ content, index }: CardProps) {
                             <td className="pl-3">{content.classification}</td>
                         </tr>
                         <tr>
-                            <td className="items-center">
-                                <VscTypeHierarchySuper className="inline-block" /> Types:
-                            </td>
+                            <td className="items-center">Types:</td>
                             <td className="flex flex-wrap content-center gap-2 pl-3">
                                 {content.types.map((types: string) => (
                                     <div
@@ -209,30 +208,6 @@ export default function Card({ content, index }: CardProps) {
                         </tr>
                     </tbody>
                 </table>
-                {/* <div>Classification: {content.classification}</div>
-                <div className="flex content-center gap-2">
-                    <span className="mr-3">Types:</span>
-                    {content.types.map((types: string) => (
-                        <div
-                            key={types}
-                            className={`${colorVariants[types]} flex items-center rounded-md pl-3 pr-3 text-sm font-normal uppercase text-white gap-2`}
-                        >
-                            {iconTypeVariants[types]}
-                            {types}
-                        </div>
-                    ))}
-                </div>
-
-                <div>
-                    <div className="w-12 inline-block">Height:</div>{" "}
-                    <span className="font-medium ml-5"> {content.height.minimum} </span> -
-                    <span className="font-medium"> {content.height.maximum} </span>
-                </div>
-                <div>
-                    <div className="w-12 inline-block">Weight:</div>{" "}
-                    <span className="font-medium ml-5"> {content.weight.minimum} </span> -
-                    <span className="font-medium"> {content.weight.maximum} </span>
-                </div> */}
             </div>
         </motion.div>
     );
