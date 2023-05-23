@@ -1,9 +1,10 @@
-import { useQuery, gql } from "@apollo/client";
 import { useEffect, useState } from "react";
 
 export default function Card({ content, index }: any) {
+    // For mobile state
     const [isMobile, setIsMobile] = useState(false);
 
+    // Detect if window is on mobile port
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768);
@@ -19,7 +20,7 @@ export default function Card({ content, index }: any) {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    const getMobileOrder = (index: any) => {
+    const getMobileOrder = (index: number) => {
         // Start index at 1
         index++;
 
@@ -32,7 +33,8 @@ export default function Card({ content, index }: any) {
         }
     };
 
-    const colorVariants: any = {
+    // For Type Colors
+    const colorVariants: { [key: string]: string } = {
         Poison: "bg-purple-400",
         Normal: "bg-gray-400",
         Fighting: "bg-red-400",
@@ -59,7 +61,7 @@ export default function Card({ content, index }: any) {
             style={{ order: isMobile ? getMobileOrder(index) : index + 1 }}
             className={`w-full flex flex-col rounded-xl bg-slate-100 p-5 sm:flex-row sm:items-center`}
         >
-            <div>
+            <div className="flex justify-center items-center">
                 <img src={content.image} className="w-36 h-36 object-contain rounded-md mix-blend-multiply" />
             </div>
             <div className="mt-5 sm:mt-0 flex flex-col gap-2 sm:ml-5">
