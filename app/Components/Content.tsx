@@ -44,7 +44,7 @@ type PokemonItemProps = {
 
 function PokemonList() {
     return (
-        <div className="container mx-auto mt-5 grid max-w-fit grid-cols-1 justify-items-center gap-3 lg:grid-cols-2">
+        <div className="container mx-auto mt-5 grid max-w-fit grid-cols-1 justify-items-center gap-3 lg:grid-cols-2 p-4">
             {chosenPokemon.map((pokemonName, index) => (
                 <PokemonItem key={pokemonName} name={pokemonName} index={index} />
             ))}
