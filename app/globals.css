@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display&display=swap');
 
 * {
-	font-family: 'Nunito Sans', sans-serif;
+	font-family: 'Clash Display', sans-serif;
 }
 
 :root {

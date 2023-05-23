@@ -1,6 +1,7 @@
 import { FaReact } from "react-icons/fa";
 import { SiNextdotjs, SiTailwindcss, SiApollographql } from "react-icons/si";
 import { GrGraphQl } from "react-icons/gr";
+import { CgFramer } from "react-icons/cg";
 
 export default function Footer() {
     return (
@@ -23,6 +24,9 @@ export default function Footer() {
                         </div>
                         <div className="rounded-md">
                             <SiApollographql />
+                        </div>
+                        <div className="rounded-md">
+                            <CgFramer />
                         </div>
                     </div>
                 </div>
