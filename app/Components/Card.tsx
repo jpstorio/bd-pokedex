@@ -1,6 +1,25 @@
 import { useEffect, useState } from "react";
 
-export default function Card({ content, index }: any) {
+type CardProps = {
+    content: {
+        image: string;
+        number: number;
+        name: string;
+        classification: string;
+        types: [];
+        height: {
+            minimum: string;
+            maximum: string;
+        };
+        weight: {
+            minimum: string;
+            maximum: string;
+        };
+    };
+    index: number;
+};
+
+export default function Card({ content, index }: CardProps) {
     // For mobile state
     const [isMobile, setIsMobile] = useState(false);
 
@@ -72,7 +91,7 @@ export default function Card({ content, index }: any) {
                 <div>Classification: {content.classification}</div>
                 <div className="flex content-center gap-2">
                     <div>Types:</div>
-                    {content.types.map((types: any) => (
+                    {content.types.map((types: string) => (
                         <div
                             key={types}
                             className={`${colorVariants[types]} flex items-center rounded-md pl-3 pr-3 text-sm font-bold uppercase text-white`}

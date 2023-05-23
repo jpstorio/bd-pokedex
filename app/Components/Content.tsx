@@ -24,6 +24,11 @@ const chosenPokemon = [
     "Caterpie",
 ];
 
+type PokemonItemProps = {
+    name: string;
+    index: number;
+};
+
 function PokemonList() {
     return (
         <div className="container mx-auto mt-5 grid max-w-fit grid-cols-1 justify-items-center gap-3 lg:grid-cols-2">
@@ -34,7 +39,7 @@ function PokemonList() {
     );
 }
 
-function PokemonItem({ name, index }: any) {
+function PokemonItem({ name, index }: PokemonItemProps) {
     const { loading, error, data } = useQuery(GET_SINGLE_POKEMON, {
         variables: { name },
     });
