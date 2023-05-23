@@ -1,6 +1,7 @@
 import { useQuery, gql } from "@apollo/client";
+import Card from "./Card";
 
-const GET_BOOKS = gql`
+const GET_POKEMONS = gql`
     query pokemons($first: Int!) {
         pokemons(first: $first) {
             number
@@ -20,37 +21,79 @@ const GET_BOOKS = gql`
     }
 `;
 
-export default function Content() {
-    const { loading, error, data } = useQuery(GET_BOOKS, {
-        variables: { first: 10 },
-    });
-    console.log(data);
+const GET_SINGLE_POKEMON = gql`
+    query pokemon($id: String, $name: String) {
+        pokemon(id: $id, name: $name) {
+            number
+            name
+            weight {
+                minimum
+                maximum
+            }
+            height {
+                minimum
+                maximum
+            }
+            classification
+            types
+            image
+        }
+    }
+`;
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error.message}</p>;
+const chosenPokemon = [
+    "Bulbasaur",
+    "Ivysaur",
+    "Venusaur",
+    "Charmander",
+    "Charmeleon",
+    "Charizard",
+    "Squirtle",
+    "Blastoise",
+    "Wartortle",
+    "Caterpie",
+];
 
+function PokemonList() {
     return (
-        <div>
-            {data.pokemons.map((data: any) => {
-                return (
-                    <div>
-                        <div>
-                            <img src={data.image} />
-                        </div>
-                        <div>{data.number}</div>
-                        <div>{data.name}</div>
-                        <div>{data.classification}</div>
-                        {data.types.map((types: any) => (
-                            <div>{types}</div>
-                        ))}
-                        <div>Minimum Height: {data.height.minimum}</div>
-                        <div>Maximum Height: {data.height.maximum}</div>
-                        <div>Minimum Weight: {data.weight.minimum}</div>
-                        <div>Maximum Weight: {data.weight.maximum}</div>
-                        <br />
-                    </div>
-                );
-            })}
+        <div className="container mx-auto mt-5 grid max-w-fit grid-cols-1 justify-items-center gap-3 lg:grid-cols-2">
+            {chosenPokemon.map((pokemonName, index) => (
+                <PokemonItem key={pokemonName} name={pokemonName} index={index} />
+            ))}
         </div>
     );
+}
+
+function PokemonItem({ name, index }: any) {
+    const { loading, error, data } = useQuery(GET_SINGLE_POKEMON, {
+        variables: { name },
+    });
+
+    if (loading) {
+        return (
+            <div className="w-80 max-w-sm mx-auto min-w-full flex flex-col rounded-xl bg-slate-100 p-5">
+                <div className="animate-pulse flex space-x-4">
+                    <div className="rounded-full bg-slate-400 h-10 w-10"></div>
+                    <div className="flex-1 space-y-6 py-1">
+                        <div className="h-2 bg-slate-400 rounded"></div>
+                        <div className="space-y-3">
+                            <div className="grid grid-cols-3 gap-4">
+                                <div className="h-2 bg-slate-400 rounded col-span-2"></div>
+                                <div className="h-2 bg-slate-400 rounded col-span-1"></div>
+                            </div>
+                            <div className="h-2 bg-slate-400 rounded"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+    if (error) return <p>Error: {error.message}</p>;
+
+    const pokemon = data.pokemon;
+    return <Card content={pokemon} index={index} />;
+}
+
+export default function Content() {
+    return <PokemonList />;
 }
