@@ -4,10 +4,6 @@
 
 @import url('https://api.fontshare.com/v2/css?f[]=clash-display@1&display=swap');
 
-* {
-	font-family: 'Kanit', sans-serif;
-}
-
 :root {
 	--foreground-rgb: 0, 0, 0;
 	--background-start-rgb: #fff;
